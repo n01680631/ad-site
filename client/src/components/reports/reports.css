@@ -1,0 +1,179 @@
+/* Overall container styling */
+.reports {
+  padding: 40px 50px;
+  max-width: 800px;
+  margin-left: 23%;
+  font-family: 'Poppins', sans-serif;
+  background: #ffffff;
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  color: #1a202c; /* dark slate */
+  user-select: none;
+}
+
+/* Title */
+.reports h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: teal;
+  text-align: center;
+  letter-spacing: 1.1px;
+  text-transform: uppercase;
+}
+
+/* Filters container */
+.filters {
+  display: flex;
+  gap: 40px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Each label and input */
+.filters label {
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: #2d3748;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* Date input styling */
+.filters input[type="date"] {
+  padding: 10px 14px;
+  border-radius: 8px;
+  border: 2px solid #cbd5e0;
+  transition: border-color 0.3s ease;
+  font-size: 1rem;
+  width: 160px;
+  cursor: pointer;
+}
+
+.filters input[type="date"]:focus {
+  outline: none;
+  border-color: teal;
+  box-shadow: 0 0 6px teal;
+}
+
+/* Buttons container */
+.reportsBtn {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-bottom: 40px;
+}
+
+/* Buttons */
+.reportsBtn button {
+  background: linear-gradient(135deg, #008080, #004d4d);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 50px;
+  border: none;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(0, 128, 128, 0.4);
+  transition: all 0.35s ease;
+  min-width: 160px;
+}
+
+.reportsBtn button:hover:not(:disabled) {
+  background: linear-gradient(135deg, #004d4d, #008080);
+  box-shadow: 0 12px 30px rgba(0, 128, 128, 0.6);
+  transform: translateY(-3px);
+}
+
+.reportsBtn button:disabled {
+  background: #a0aec0;
+  cursor: not-allowed;
+  box-shadow: none;
+  transform: none;
+  color: #e2e8f0;
+}
+
+/* Summary box */
+.summary {
+  background: #e6fffa;
+  border-left: 6px solid teal;
+  padding: 20px 30px;
+  border-radius: 12px;
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #065f46;
+  max-width: 500px;
+  margin: 0 auto 40px auto;
+  box-shadow: 0 4px 12px rgba(6, 95, 70, 0.15);
+  letter-spacing: 0.05em;
+}
+
+/* Download history */
+.downloadHistory {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.downloadHistory h3 {
+  font-weight: 700;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2c5282;
+  border-bottom: 2px solid teal;
+  padding-bottom: 6px;
+  letter-spacing: 0.05em;
+}
+
+.downloadHistory ul {
+  list-style: none;
+  padding-left: 0;
+  max-height: 200px;
+  overflow-y: auto;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: #f7fafc;
+  box-shadow: inset 0 0 8px #cbd5e0;
+}
+
+.downloadHistory li {
+  padding: 12px 18px;
+  font-size: 1rem;
+  color: #4a5568;
+  border-bottom: 1px solid #e2e8f0;
+  transition: background-color 0.3s ease;
+}
+
+.downloadHistory li:last-child {
+  border-bottom: none;
+}
+
+.downloadHistory li:hover {
+  background-color: #bee3f8;
+  color: #2a4365;
+  font-weight: 600;
+  cursor: default;
+}
+
+/* Responsive tweaks */
+@media (max-width: 640px) {
+  .filters {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .filters label {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .reportsBtn {
+    flex-direction: column;
+  }
+
+  .reportsBtn button {
+    width: 100%;
+    max-width: 300px;
+  }
+}
