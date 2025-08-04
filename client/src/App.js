@@ -6,6 +6,7 @@ import Leads from './components/leads/Leads';
 import Analytics from './components/analytics/Analytics';
 import Reports from './components/reports/Reports';
 import CreateAdd from './components/createAdd/CreateAdd';
+import ProductDetails from './components/productDetails/ProductDetails';
 import './App.css';
 
 // Main App component that sets up routing and layout
@@ -27,6 +28,8 @@ const App = () => {
           <Route path="/reports" element={<Reports />} />
           {/* Route for Create Add page */}
           <Route path="/create-Add" element={<CreateAdd/>} />
+          <Route path="/product/:id" element={<ProductDetails />} />
+
         </Routes>
       </div>
     </Router>

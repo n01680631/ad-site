@@ -1,4 +1,4 @@
-/* Overall container styling */
+
 .reports {
   padding: 40px 50px;
   max-width: 800px;
@@ -7,30 +7,28 @@
   background: #ffffff;
   box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
   border-radius: 16px;
-  color: #1a202c; /* dark slate */
+  color: #1a202c; 
   user-select: none;
 }
 
-/* Title */
 .reports h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
+  
   margin-bottom: 30px;
-  color: teal;
+  color: #0d4f57;
+  font-weight: 700;
+  font-size: 2.5rem;
   text-align: center;
   letter-spacing: 1.1px;
   text-transform: uppercase;
 }
 
-/* Filters container */
+
 .filters {
   display: flex;
   gap: 40px;
   justify-content: center;
   margin-bottom: 30px;
 }
-
-/* Each label and input */
 .filters label {
   font-weight: 600;
   font-size: 1.1rem;
@@ -41,7 +39,6 @@
   gap: 8px;
 }
 
-/* Date input styling */
 .filters input[type="date"] {
   padding: 10px 14px;
   border-radius: 8px;
@@ -57,16 +54,12 @@
   border-color: teal;
   box-shadow: 0 0 6px teal;
 }
-
-/* Buttons container */
 .reportsBtn {
   display: flex;
   justify-content: center;
   gap: 25px;
   margin-bottom: 40px;
 }
-
-/* Buttons */
 .reportsBtn button {
   background: linear-gradient(135deg, #008080, #004d4d);
   color: white;
@@ -94,8 +87,6 @@
   transform: none;
   color: #e2e8f0;
 }
-
-/* Summary box */
 .summary {
   background: #e6fffa;
   border-left: 6px solid teal;
@@ -109,8 +100,6 @@
   box-shadow: 0 4px 12px rgba(6, 95, 70, 0.15);
   letter-spacing: 0.05em;
 }
-
-/* Download history */
 .downloadHistory {
   max-width: 600px;
   margin: 0 auto;
@@ -155,8 +144,6 @@
   font-weight: 600;
   cursor: default;
 }
-
-/* Responsive tweaks */
 @media (max-width: 640px) {
   .filters {
     flex-direction: column;

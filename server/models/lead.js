@@ -1,24 +1,12 @@
 import mongoose from 'mongoose';
-const Schema = mongoose.Schema;
 
-const LeadSchema = new Schema({
-    name: { 
-        type: String, 
-        required: true 
-    },
-    email: { 
-        type: String, 
-        required: true 
-    },
-    campaign: { 
-        type: String, 
-        required: true 
-    },
-    date: { 
-        type: Date, 
-        default: Date.now 
-    }
-});
+const leadSchema = new mongoose.Schema({
+  name: String,
+  email: String,
+  campaign: String,
+  }, { collection: 'Leads' });
 
-const Lead = mongoose.model('Lead', LeadSchema);
+
+const Lead = mongoose.model('Lead', leadSchema);
+
 export default Lead;

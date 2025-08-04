@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
-import './createAdd.css'; // Import custom styles
+import React, { useState, useRef } from 'react';
+import './createAdd.css'; 
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
 
 const Add = () => {
-  // State variables for form fields
+  // State variables
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [image, setImage] = useState(null);
@@ -12,16 +14,35 @@ const Add = () => {
   const [fontStyle, setFontStyle] = useState('Arial');
   const [align, setAlign] = useState('center');
 
-  // Handle image upload and preview
+  // Ref for the preview to export as PDF
+  const previewRef = useRef();
+
+  // Handle image upload
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       setImage(file);
-      setPreview(URL.createObjectURL(file)); // Generate preview URL
+      setPreview(URL.createObjectURL(file));
     }
   };
 
-  // Form submission handler (currently demo only)
+  // Download preview as PDF
+  const handleDownload = async () => {
+    const element = previewRef.current;
+    if (!element) return;
+
+    const canvas = await html2canvas(element);
+    const imgData = canvas.toDataURL('image/png');
+
+    const pdf = new jsPDF('p', 'mm', 'a4');
+    const width = pdf.internal.pageSize.getWidth();
+    const height = (canvas.height * width) / canvas.width;
+
+    pdf.addImage(imgData, 'PNG', 0, 0, width, height);
+    pdf.save('advertisement.pdf');
+  };
+
+  // Handle form submit
   const handleSubmit = (e) => {
     e.preventDefault();
     alert('Ad created! (this is a demo)');
@@ -33,7 +54,6 @@ const Add = () => {
 
       {/* Ad Form */}
       <form className="add-form" onSubmit={handleSubmit}>
-        {/* Title Input */}
         <label>
           Title:
           <input
@@ -45,7 +65,6 @@ const Add = () => {
           />
         </label>
 
-        {/* Description Textarea */}
         <label>
           Description:
           <textarea
@@ -56,19 +75,16 @@ const Add = () => {
           />
         </label>
 
-        {/* Image Upload */}
         <label>
           Upload Image:
           <input type="file" accept="image/*" onChange={handleImageChange} />
         </label>
 
-        {/* Background Color Picker */}
         <label>
           Background Color:
           <input type="color" value={bgColor} onChange={e => setBgColor(e.target.value)} />
         </label>
 
-        {/* Font Size Range Slider */}
         <label>
           Font Size:
           <input
@@ -80,7 +96,6 @@ const Add = () => {
           />
         </label>
 
-        {/* Font Style Dropdown */}
         <label>
           Font Style:
           <select value={fontStyle} onChange={(e) => setFontStyle(e.target.value)}>
@@ -91,7 +106,6 @@ const Add = () => {
           </select>
         </label>
 
-        {/* Text Alignment Dropdown */}
         <label>
           Text Alignment:
           <select value={align} onChange={(e) => setAlign(e.target.value)}>
@@ -100,12 +114,11 @@ const Add = () => {
           </select>
         </label>
 
-        {/* Submit Button */}
         <button type="submit">Create Ad</button>
       </form>
 
-      {/* Live Preview of the Ad */}
-      <div className="ad-preview">
+      {/* Live Preview */}
+      <div className="ad-preview" ref={previewRef}>
         <h2>Live Preview</h2>
         <div
           className="preview-card"
@@ -115,14 +128,18 @@ const Add = () => {
             textAlign: align,
           }}
         >
-          {/* Image Preview */}
           {preview && <img src={preview} alt="Ad preview" />}
-          {/* Title with dynamic font size */}
           <h3 style={{ fontSize: `${fontSize}px` }}>{title}</h3>
-          {/* Description */}
           <p>{description}</p>
         </div>
       </div>
+
+      {/* Download Button */}
+      <div className="download-btn-container" >
+      <button onClick={handleDownload} className="download-btn">
+        Download Ad as PDF
+      </button>
+    </div>
     </div>
   );
 };
